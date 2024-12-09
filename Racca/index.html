@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush Kaba ng Crush Mo?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+        h2 {
+            color: #4b9cd3;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4b9cd3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #357ab7;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .message.large {
+            font-size: 25px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="page1">
+        <h2>CRUSH KABA NG CRUSH MO?</h2>
+        <button onclick="chooseAnswer('SHEMPRE')">SHEMPRE</button>
+        <button onclick="chooseAnswer('NVM')">NVM</button>
+    </div>
+
+    <div class="container hidden" id="page2">
+        <h2>ILALABAN O MAG MOVE ON NALANG?</h2>
+        <button onclick="finalAnswer('ILALABAN')">ILALABAN</button>
+        <button onclick="finalAnswer('MAG MOVE ON NALANG')">MAG MOVE ON NALANG</button>
+    </div>
+
+    <div class="container hidden" id="result">
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        // Function for handling the first question (SHEMPRE or NVM)
+        function chooseAnswer(answer) {
+            const page1 = document.getElementById("page1");
+            const page2 = document.getElementById("page2");
+            const result = document.getElementById("result");
+            const messageElement = document.getElementById("message");
+
+            // Hide the first page and show the next based on the answer
+            page1.classList.add("hidden");
+            if (answer === "SHEMPRE") {
+                messageElement.textContent = "SANA OLLLL";
+                result.classList.remove("hidden");
+            } else if (answer === "NVM") {
+                messageElement.textContent = "ILALABAN O MAG MOVE ON NALANG";
+                page2.classList.remove("hidden");
+            }
+        }
+
+        // Function for handling the second question (ILALABAN or MAG MOVE ON NALANG)
+        function finalAnswer(answer) {
+            const page2 = document.getElementById("page2");
+            const result = document.getElementById("result");
+            const messageElement = document.getElementById("message");
+
+            // Hide the second page and show the result based on the answer
+            page2.classList.add("hidden");
+            if (answer === "ILALABAN") {
+                messageElement.textContent = "WALA KANG PAG ASA DYAN HAHAHAHA";
+                result.classList.remove("hidden");
+            } else if (answer === "MAG MOVE ON NALANG") {
+                messageElement.textContent = "KAWAWA DI NA CRUSHBACK";
+                messageElement.classList.add("large");
+                result.classList.remove("hidden");
+            }
+        }
+    </script>
+
+</body>
+</html>
